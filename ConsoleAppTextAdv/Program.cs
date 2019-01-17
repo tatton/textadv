@@ -20,6 +20,16 @@ namespace ConsoleAppTextAdv
                 Name = name;
                 Description = description;
             }
+
+            public string getName()
+            {
+                return Name;
+            }
+            public string getDescription()
+            {
+                return Description;
+            }
+
         }
 
         class Place: GameEntity
@@ -69,9 +79,10 @@ namespace ConsoleAppTextAdv
         private static void SetUpGame(List<Character> characters, List<Item> items, List<Place> places)
         {
             
-            characters.Add(new Character(101,"Goblin","Dirty 5 foot Goblin with a damaged left eye",1));
+            
             items.Add(new Item(301, "bow", "An elvish bow made of carved hardwood", 102, "carried"));
             characters.Add(new Character(102, "Elf", "Tall blonde haired, blue eyed elf holding a bow", 2));
+            characters.Add(new Character(101, "Goblin", "Dirty 5 foot Goblin with a damaged left eye", 1));
             places.Add(new Place(201, "Smelly ditch", "The muddy ditch smells of rotten food", 0, 2, 0, 0, 0, 0));
             places.Add(new Place(202, "Bumpy Road", "The road is well worn and has many bumps and potholes", 0, 0, 0, 1, 0, 0));
         }
@@ -103,7 +114,7 @@ namespace ConsoleAppTextAdv
                         break;
                 }
             }
-            Console.Write("\nGoodbye.");
+            
         }
             static void Main(string[] args)
         {
@@ -111,7 +122,12 @@ namespace ConsoleAppTextAdv
             List<Item> items = new List<Item>();
             List<Character> characters = new List<Character>();
             SetUpGame(characters, items, places);
+            Character myCharacter = characters[0];
+            Console.WriteLine("Welcome to this game, "+ myCharacter.getName());
             PlayGame(characters, items, places);
+            Console.Write("\nGoodbye, ");
+            Console.WriteLine(myCharacter.getName());
+            
             Console.ReadLine();
         }
     }
